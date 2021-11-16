@@ -130,7 +130,7 @@ To seamlessly use Git inside the container, grant the container access to `.gitc
 
 ~~~bash
 docker run -d \
-    -v <PATH TO .gitconfig>:/home/rstudio/.gitconfig:ro \
+    --mount type=bind,src=<PATH TO .gitconfig>,dst=/home/rstudio/.gitconfig,readonly \
     ...
 ~~~
 
@@ -138,7 +138,7 @@ For example, share the current user's `.gitconfig` with
 
 ~~~bash
 docker run -d \
-    -v ~/.gitconfig:/home/rstudio/.gitconfig:ro \
+    --mount type=bind,src="/$HOME/.gitconfig",dst=/home/rstudio/.gitconfig,readonly \
     ...
 ~~~
 
@@ -146,7 +146,7 @@ T use Git with SSH, grant the container access to the SSH credentials, by adding
 
 ~~~bash
 docker run -d \
-    -v <PATH TO credentials>:/home/rstudio/.ssh:ro \
+    --mount type=bind,src=<PATH TO credentials>,dst=/home/rstudio/.ssh,readonly \
     ...
 ~~~
 
@@ -154,6 +154,6 @@ For example,
 
 ~~~bash
 docker run -d \
-    -v ~/.ssh:/home/rstudio/.ssh:ro \
+    --mount type=bind,src="/$HOME/.ssh",dst=/home/rstudio/.ssh,readonly \
     ...
 ~~~
