@@ -61,10 +61,10 @@ docker build \
 # Add to work seamlessly with git inside the container
 #
 # Share global .gitconfig with container
-#    -v ~/.gitconfig:/home/rstudio/.gitconfig:ro \
+#    --mount type=bind,src="/$HOME/.gitconfig",dst=/home/rstudio/.gitconfig,readonly \
 #
 # Share SSH credentials with container
-#    -v ~/.ssh:/home/rstudio/.ssh:ro \
+#    --mount type=bind,src="/$HOME/.ssh",dst=/home/rstudio/.ssh,readonly \
 
 if test ! -f DESCRIPTION ; then \
     Rscript -e "usethis::use_description(fields = list(Remotes = c('github::crsh/papaja@devel')), check_name = FALSE, roxygen = FALSE)"
@@ -80,7 +80,7 @@ docker run -d \
     -p 8787:8787 \
     -e DISABLE_AUTH=TRUE \
     -e ROOT=TRUE \
-    -v "/$PWD":/home/rstudio \
+    --mount type=bind,src="/$PWD",dst=/home/rstudio \
     --name $(echo $PROJECT_NAME | grep -o "^[a-zA-Z0-9]*") \
     --rm \
     $PROJECT_NAME
