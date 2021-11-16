@@ -81,6 +81,7 @@ docker run -d \
     -e DISABLE_AUTH=TRUE \
     -e ROOT=TRUE \
     --mount type=bind,src="/$PWD",dst=/home/rstudio \
+    --mount type=bind,src="/$(Rscript -e 'cat(path.expand(usethis:::rstudio_config_path()))')",dst=/home/rstudio/.config/rstudio \
     --name $(echo $PROJECT_NAME | grep -o "^[a-zA-Z0-9]*") \
     --rm \
     $PROJECT_NAME

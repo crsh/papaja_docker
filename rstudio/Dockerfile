@@ -10,7 +10,8 @@ RUN apt-get update \
     libgsl0-dev \
     libnlopt-dev \
     libxt6 \
-    ssh
+    ssh \
+    fonts-firacode
 
 # TeX Live
 ARG TEXLIVE_VERSION=2021
@@ -67,3 +68,4 @@ RUN if test -f DESCRIPTION ; then \
 
 RUN rm -f DESCRIPTION
 RUN rm -rf /tmp/downloaded_packages
+RUN mkdir -p .config/rstudio
