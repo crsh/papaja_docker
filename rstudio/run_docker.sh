@@ -71,7 +71,7 @@ if test ! -f DESCRIPTION ; then \
 fi
 
 if test ! -f CITATION ; then \
-    Rscript -e "usethis::use_template('citation-template.R', 'CITATION', data = usethis:::package_data() open = TRUE)"
+    Rscript -e "usethis::use_template('citation-template.R', 'CITATION', data = usethis:::package_data(), open = TRUE)"
 fi
 
 Rscript -e "cffr::cff_write()"

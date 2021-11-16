@@ -126,7 +126,7 @@ RUN Rscript -e "remotes::install_version('rlang', '0.4.7', repos = 'http://cran.
 ## Use Git inside the container
 
 The containers provided here come with Git (and SSH) installed.
-To seamlessly use Git inside the container, grant the container access to `.gitconfig` by adding the following to the `docker run` call
+To seamlessly use Git inside the container, grant the container access to `.gitconfig` by adding the following to the `docker run` call:
 
 ~~~bash
 docker run -d \
@@ -142,7 +142,7 @@ docker run -d \
     ...
 ~~~
 
-T use Git with SSH, grant the container access to the SSH credentials, by adding the following to the `docker run` call
+To use Git with SSH, grant the container access to the SSH credentials, by adding the following to the `docker run` call:
 
 ~~~bash
 docker run -d \
